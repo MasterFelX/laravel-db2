@@ -93,6 +93,7 @@ return [
             // Can be used to overwrite the default result processor. E.g. My\Custom\DB2Processor::class
             // If you leave this empty the default processor wil be used.
             'odbc_keywords' => [
+                'AUTHENTICATION' => 'SERVER',
                 'SIGNON' => 3,
                 'SSL' => 0,
                 'CommitMode' => 2,

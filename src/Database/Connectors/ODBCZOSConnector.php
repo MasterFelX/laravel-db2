@@ -9,33 +9,26 @@ namespace Easi\DB2\Database\Connectors;
  */
 class ODBCZOSConnector extends ODBCConnector
 {
-    /**
-     * @param array $config
-     *
-     * @return string
-     */
-    protected function getDsn(array $config)
-    {
-        $dsnParts = [
+    protected function getDsnParts() : array{
+        return [
             'odbc:DRIVER=%s',
             'DATABASE=%s',
             'HOSTNAME=%s',
             'PORT=%s',
             'PROTOCOL=TCPIP',
             'UID=%s',
-            'PWD=%s',
-            '', // Just to add a semicolon to the end of string
+            'PWD=%s'
         ];
+    }
 
-        $dsnConfig = [
+    protected function getDsnConfig($config) : array{
+        return [
             $config['driverName'],
             $config['database'],
             $config['host'],
             $config['port'],
             $config['username'],
-            $config['password'],
+            $config['password']
         ];
-
-        return sprintf(implode(';', $dsnParts), ...$dsnConfig);
     }
 }
